@@ -29,6 +29,42 @@ def checkWin(board):
     ):
         return True
 
-#Start
+#Start On Start
 print("\n\n")
 printBoard(board)
+
+gameInSession = True
+Xturn = True
+
+while(gameInSession):
+    if(Xturn):
+        position = int(input("Player X, please enter a position from 0 to 8: \n"))
+
+        while (position>8 or position<0 or board[position]!=" "):
+            position = int(input("Invalid play or position already taken, please enter an empty position from 0 to 8: \n"))
+
+        print('\n')
+        board[position] = 'X'
+        printBoard(board)
+        Xturn = False
+
+        if(checkWin(board)):
+            print("---------------\nPlayer X wins\n---------------")
+            gameInSession = False
+            break
+    else:
+        position = int(input("Player O, please enter a position from 0 to 8: \n"))
+
+        while (position > 8 or position < 0 or board[position] != " "):
+            position = int(
+                input("Invalid play or position already taken, please enter an empty position from 0 to 8: \n"))
+
+        print('\n')
+        board[position] = 'O'
+        printBoard(board)
+        Xturn = True
+
+        if (checkWin(board)):
+            print("\n\n---------------\nPlayer O wins\n---------------")
+            gameInSession = False
+            break
